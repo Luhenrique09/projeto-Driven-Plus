@@ -116,7 +116,7 @@ function CadPlano() {
                         onChange={e => setCodigo(e.target.value)}
                         value={codigo}
                         id="digitos"
-                        placeholder="Digitos do cartão"
+                        placeholder="Código de segurança"
                         name='digitos' type='text'
                         required></Input>
 
@@ -124,7 +124,7 @@ function CadPlano() {
                         onChange={e => setValidade(e.target.value)}
                         value={validade}
                         id="digitos"
-                        placeholder="Digitos do cartão"
+                        placeholder="Validade"
                         name='digitos' type='text'
                         required></Input>
 
