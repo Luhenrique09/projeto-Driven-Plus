@@ -10,7 +10,7 @@ function PaginaCadastro() {
     const [email, setEmail] = useState('')
     const [cpf, setcpf] = useState('')
     const [password, setPassword] = useState('')
-    const [isLoading, Carregando] = useState(false);
+    const [carregando, setCarregando] = useState(false);
     const URLCad= 'https://mock-api.driven.com.br/api/v4/driven-plus/auth/sign-up'
     const body = {
         email: email,
@@ -22,17 +22,17 @@ function PaginaCadastro() {
     function handleSubmit(e) {
         e.preventDefault();
         
-        Carregando(true);
+        setCarregando(true);
         const promise = axios.post(URLCad, body)
 
         promise.then(() => {
-            Carregando(false);
+            setCarregando(false);
             navigate("/");
         });
         promise.catch((erro) => {
+            alert(erro.response.data.message)
+            setCarregando(false);
             
-            Carregando(false);
-            alert('Erro, tente novamente');
         });
     }
     return (
@@ -42,7 +42,7 @@ function PaginaCadastro() {
                     <input
                         onChange={e => setNome(e.target.value)}
                         value={nome}
-                        disabled={isLoading}
+                        disabled={carregando}
                         id="nome"
                         placeholder="nome"
                         name='nome' type='text'
@@ -51,7 +51,7 @@ function PaginaCadastro() {
                     <input
                         onChange={e => setcpf(e.target.value)}
                         value={cpf}
-                        disabled={isLoading}
+                        disabled={carregando}
                         id="cpf"
                         placeholder="CPF"
                         name='cpf' type='text'
@@ -60,7 +60,7 @@ function PaginaCadastro() {
                     <input
                         onChange={e => setEmail(e.target.value)}
                         value={email}
-                        disabled={isLoading}
+                        disabled={carregando}
                         id="email"
                         placeholder="email"
                         name='email' type='email'
@@ -70,14 +70,14 @@ function PaginaCadastro() {
                     <input
                         onChange={e => setPassword(e.target.value)}
                         value={password}
-                        disabled={isLoading}
+                        disabled={carregando}
                         id="senha"
                         placeholder="senha"
                         name='senha' type='password'
                         required></input>
 
                     <button type='submit'>  {
-            isLoading
+            carregando
               ? '...'
               : "Cadastrar"
           } </button>

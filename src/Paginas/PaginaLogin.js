@@ -38,10 +38,12 @@ function PaginaLogin() {
         promise.then((res) => {
             Carregando(false);
             setUser(res.data)
-            setPlano(res.data.membership)
-           if(userRece.membership===null){
+            
+           if(res.data.membership===null){
             navigate('/subscriptions')
+            setPlano('')
            }else {
+            setPlano(res.data.membership)
             navigate('/home')
             
            }
@@ -53,7 +55,6 @@ function PaginaLogin() {
         });
     }
 
-console.log(plano)
     return (
         <>
             <Conteiner>

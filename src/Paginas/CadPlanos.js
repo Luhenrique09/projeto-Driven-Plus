@@ -69,8 +69,6 @@ function CadPlano() {
             const promise = axios.post(URL, body,config)
             promise.then((resp) => {
               
-            
-              
             })
     
             promise.catch((error) => console.log(error.response.data))
@@ -102,7 +100,7 @@ function CadPlano() {
                         id="Nome"
                         placeholder="Nome impresso no cartão"
                         name='Nome' type='text'
-                        /* required */></BigInput>
+                        required></BigInput>
 
 
                     <BigInput
@@ -112,7 +110,7 @@ function CadPlano() {
                         id="digitos"
                         placeholder="Digitos do cartão"
                         name='digitos' type='text'
-                        /* required */></BigInput>
+                        required></BigInput>
 
                     <Input
                         onChange={e => setCodigo(e.target.value)}
@@ -120,7 +118,7 @@ function CadPlano() {
                         id="digitos"
                         placeholder="Digitos do cartão"
                         name='digitos' type='text'
-                        /* required */></Input>
+                        required></Input>
 
                     <Input
                         onChange={e => setValidade(e.target.value)}
@@ -128,7 +126,7 @@ function CadPlano() {
                         id="digitos"
                         placeholder="Digitos do cartão"
                         name='digitos' type='text'
-                        /* required */></Input>
+                        required></Input>
 
                     <Assinar
                         onClick={(e)=>confirme(e)}
